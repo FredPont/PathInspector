@@ -24,6 +24,5 @@ example :
 pathin-x86_64_linux.bin -i=false -l 4 -d /home/fred/test
 ```
 
-
 # ScreenShots
 ![CLI](src/images/screenshot.png)
