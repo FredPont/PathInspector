@@ -7,6 +7,7 @@ Path Inspector is a software to compute recursively file path sizes and list all
 # Quick start
 - the software can be run in interactive mode or command line
 - interactive mode is the default mode : just start the software and answer the questions
+- to have absolute path, enter the absolute path of the directory to scan
 
 - command line mode :
 ```
