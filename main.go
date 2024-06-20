@@ -39,14 +39,15 @@ func main() {
 	// Create a channel called stop
 	stop := make(chan struct{})
 	go fileutil.Spinner(stop) // enable spinner
-	fileutil.ParseDir(args)
-	close(stop) // closing the channel stop the goroutine
+	fileutil.ParseDir(args)   // start dir analysis
+	close(stop)               // closing the channel stop the goroutine
 
 	fmt.Println("\ndone !")
 	fmt.Println("Results are in results/output.tsv !")
 	fmt.Println("Elapsed time : ", time.Since(t0))
 
 	// Define the duration for the countdown
+	// before closing the window
 	// Set the countdown time in seconds
 	countdownFrom := 3
 	fileutil.Timer(countdownFrom)
@@ -58,6 +59,7 @@ func parseARG() fileutil.Args {
 	flag.IntVar(&args.Length, "l", 255, "maximal path length")
 	flag.StringVar(&args.Dir, "d", ".", "path")
 	flag.BoolVar(&args.Interactive, "i", true, "Interactive mode. Important syntax is -i=false")
+	flag.BoolVar(&args.EnablePrinting, "p", true, "Enable printing path to terminal. Important syntax is -p=false")
 	flag.Parse()
 	return args
 }
@@ -70,7 +72,7 @@ func interMode() fileutil.Args {
 		fmt.Println("Error reading size:", err)
 		return fileutil.Args{Length: 255, Dir: "."}
 	}
-	fmt.Println("You entered:", size)
+
 	fmt.Println("Enter the path")
 	var path string
 	_, err = fmt.Scan(&path)
@@ -78,7 +80,18 @@ func interMode() fileutil.Args {
 		fmt.Println("Error reading path:", err)
 		return fileutil.Args{Length: size, Dir: "."}
 	}
-	fmt.Println("You entered:", path)
 
-	return fileutil.Args{Length: size, Dir: path}
+	fmt.Println("Enable printing path in terminal ? (y/n)")
+	var printing string
+	enablePrinting := true
+	_, err = fmt.Scan(&printing)
+	if err != nil {
+		fmt.Println("Error reading path:", err)
+		return fileutil.Args{Length: size, Dir: ".", EnablePrinting: true}
+	}
+	if printing != "y" {
+		enablePrinting = false
+	}
+
+	return fileutil.Args{Length: size, Dir: path, EnablePrinting: enablePrinting}
 }

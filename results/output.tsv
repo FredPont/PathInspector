@@ -1,0 +1,6 @@
+.git/hooks/fsmonitor-watchman.sample	36
+.git/hooks/prepare-commit-msg.sample	36
+.git/hooks/sendemail-validate.sample	36
+.git/objects/pack/pack-c035aac81513084f8276bdc0bed46e72dd8fcba4.idx	67
+.git/objects/pack/pack-c035aac81513084f8276bdc0bed46e72dd8fcba4.pack	68
+.git/objects/pack/pack-c035aac81513084f8276bdc0bed46e72dd8fcba4.rev	67

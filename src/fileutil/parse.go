@@ -28,13 +28,15 @@ import (
 )
 
 type Args struct {
-	Length      int
-	Interactive bool
-	Dir         string
+	Length         int
+	Interactive    bool
+	Dir            string
+	EnablePrinting bool
 }
 
 func ParseDir(args Args) {
 	dir := args.Dir
+	pathCounter := 0
 	// Create a file for writing
 	outfile, err := os.Create("results/output.tsv")
 	if err != nil {
@@ -61,8 +63,12 @@ func ParseDir(args Args) {
 		pathLength := len(path)
 
 		if pathLength >= args.Length {
+			pathCounter++
 			writeLine(writer, []string{path, strconv.Itoa(pathLength)})
-			fmt.Println(path, pathLength)
+			if args.EnablePrinting {
+				fmt.Println(pathCounter, "- ", path, pathLength)
+			}
+
 		}
 
 		return nil
@@ -78,6 +84,8 @@ func ParseDir(args Args) {
 	if err := writer.Error(); err != nil {
 		fmt.Println(err) // Handle errors after flushing
 	}
+	fmt.Println("\n\n──────────────────────────────────────────────────")
+	fmt.Println(pathCounter, " path are above the limit of ", args.Length, " char")
 }
 
 func writeLine(writer *csv.Writer, data []string) {

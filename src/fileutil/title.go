@@ -24,7 +24,7 @@ func Title() {
 	fmt.Println("")
 	fmt.Println("   ┌────────────────────────────────────────┐") // unicode U+250C
 	fmt.Println("   │     Path Inspector (c)Frederic PONT    │")
-	fmt.Println("   │    v20240619 - Free Software GNU GPL   │")
+	fmt.Println("   │    v20240620 - Free Software GNU GPL   │")
 	fmt.Println("   └────────────────────────────────────────┘")
 	//fmt.Println("")
 }
