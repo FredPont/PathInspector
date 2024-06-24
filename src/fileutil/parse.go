@@ -102,6 +102,7 @@ func writeLine(writer *csv.Writer, data []string) {
 	}
 }
 
+// contains return true if one item of arr is equal to str
 func contains(arr []string, str string) bool {
 	for _, s := range arr {
 		if s == str {
