@@ -32,10 +32,12 @@ type Args struct {
 	Interactive    bool
 	Dir            string
 	EnablePrinting bool
+	Exclude        []string
 }
 
 func ParseDir(args Args) {
 	dir := args.Dir
+	excludedDirs := args.Exclude // Directories to exclude
 	pathCounter := 0
 	// Create a file for writing
 	outfile, err := os.Create("results/output.tsv")
@@ -51,6 +53,9 @@ func ParseDir(args Args) {
 	err = filepath.WalkDir(dir, func(path string, info os.DirEntry, err error) error {
 		if err != nil {
 			return err
+		}
+		if info.IsDir() && contains(excludedDirs, info.Name()) {
+			return filepath.SkipDir // Skip directory if it's in the excluded list
 		}
 
 		// Process the file or directory here
@@ -95,4 +100,13 @@ func writeLine(writer *csv.Writer, data []string) {
 		fmt.Println(err)
 		return
 	}
+}
+
+func contains(arr []string, str string) bool {
+	for _, s := range arr {
+		if s == str {
+			return true
+		}
+	}
+	return false
 }

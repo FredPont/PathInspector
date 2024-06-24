@@ -1,0 +1,6 @@
+# Enter here the directories to exclude, one per line
+# this is a comment
+#
+#~snapshot
+#.git
+#test

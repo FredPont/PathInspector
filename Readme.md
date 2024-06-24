@@ -10,6 +10,7 @@ Path Inspector is a software to compute recursively file path sizes and list all
 - to have absolute path, enter the absolute path of the directory to scan
 - to analyse the current directory enter <.> as directory name
 - a table with all the path above the limit is produced in the results/ouput.tsv file
+- to exclude some directories, edit the TSV file conf/excludeList.csv and enter the directories to exclude, one per line
 
 - command line mode :
 ```

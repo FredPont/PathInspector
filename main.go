@@ -33,7 +33,9 @@ func main() {
 	if args.Interactive {
 		args = interMode()
 	}
-	fmt.Println("Option :", args)
+
+	args.Exclude = fileutil.ReadExcludeList("conf/excludeList.csv", args)
+	fmt.Println("Options :", args)
 
 	// start a new goroutine that runs the spinner function
 	// Create a channel called stop
