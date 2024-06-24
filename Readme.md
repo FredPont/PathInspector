@@ -34,7 +34,8 @@ example :
 ./pathin-x86_64_linux.bin -i=false -l 4 -d /home/fred/test
 # non interactive mode, list path >= 100, in the directory containing the software directory
 ./pathin-x86_64_linux.bin -i=false -l 100 -d ../
-# non interactive mode, list path >= 100, in the directory containing the software directory, printing disabled in terminal
+# non interactive mode, list path >= 100, in the directory containing the software directory
+# with printing disabled in terminal
 ./pathin-x86_64_linux.bin -i=false -l 100 -d ../ -p=false 
 ```
 
