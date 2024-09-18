@@ -19,7 +19,7 @@ Path Inspector is a software to compute recursively file path sizes and list all
 Usage 
   -d string
         path (default ".")
-  -i    Interactive mode. Important syntax is -i=false (default true)
+  -i    Interactive mode. Important note : syntax is -i=false (default true)
   -l int
         maximal path length (default 255)
   -p Enable printing path to terminal. Important syntax is -p=false (default true)
